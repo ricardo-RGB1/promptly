@@ -42,7 +42,7 @@ const Nav = () => {
             </button>
             <Link href="/profile">
               <Image
-                src="/assets/images/logo.svg"
+                src={session?.user.image}
                 width={30}
                 height={30}
                 className="rounded-full"
@@ -56,11 +56,11 @@ const Nav = () => {
               Object.values(providers).map((provider) => (
                 <button
                   type="button"
-                  key={provider.nam}
+                  key={provider.name}
                   onClick={() => signIn(provider.id)}
                   className="black_btn"
                 >
-                  Sign in with {provider.name}
+                  Sign in
                 </button>
               ))}
           </>
@@ -72,11 +72,11 @@ const Nav = () => {
         {session?.user ? (
           <div className="flex">
             <Image
-              src="/assets/images/logo.svg"
+              src={session?.user.image}
               width={30}
               height={30}
               alt="logo"
-              className="object-contain cursor-pointer"
+              className="object-contain cursor-pointer rounded-full"
               onClick={() => setToggleDropdown((prev) => !prev)}
             />
             {toggleDropdown && (
@@ -86,7 +86,7 @@ const Nav = () => {
                   className="dropdown_link"
                   onClick={() => setToggleDropdown(false)}
                 >
-                  My Profile
+                  My Profile 
                 </Link>
                 <Link
                   href="/create-prompt"
@@ -108,17 +108,17 @@ const Nav = () => {
               </div>
             )}
           </div>
-        ) : (
+        ) : (  
           <>
             {providers &&
               Object.values(providers).map((provider) => (
                 <button
                   type="button"
-                  key={provider.nam}
+                  key={provider.name}
                   onClick={() => signIn(provider.id)}
                   className="black_btn"
                 >
-                  Sign in with {provider.name}
+                  Sign in
                 </button>
               ))}
           </>
