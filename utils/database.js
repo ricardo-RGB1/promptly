@@ -9,12 +9,13 @@ export const connectToDatabase = async () => {
   }
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
+      useNewUrlParser: true, 
       useUnifiedTopology: true,
       dbName: "share_prompt",
-    });
+    })
     isConnected = true;
   } catch (error) {
     console.log(error);
   }
 };
+ 
